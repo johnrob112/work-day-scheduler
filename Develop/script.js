@@ -51,11 +51,11 @@ $(".block9").text(pm4);
 
 
 function testTime() {
-    // Add am9 9AM
+    // Add 9AM
     am9 = moment().startOf('day').add(9, "hours");
     // Adjusts current time to the hour
     currentTime = currentTime.startOf("hour");
-    // Add am9 if/else
+    // Add if/else for the different time slots to determine past/present/future
     if (currentTime.isAfter(am9)) {
         $(".form9").addClass("past");
     }
@@ -65,9 +65,8 @@ function testTime() {
     else if (currentTime.isSame(am9)) {
         $(".form9").addClass("present");
     };
-    // Add am10 10AM
+    // 10AM
     am10 = moment().startOf('day').add(10, "hours");
-    // Add am10 if/else
     if (currentTime.isAfter(am10)) {
         $(".form10").addClass("past");
     }
@@ -77,9 +76,8 @@ function testTime() {
     else if (currentTime.isSame(am10)) {
         $(".form10").addClass("present");
     };
-    // am11 11AM
+    // 11AM
     am11 = moment().startOf('day').add(11, "hours");
-    // Add am11 if/else
     if (currentTime.isAfter(am11)) {
         $(".form11").addClass("past");
     }
@@ -101,9 +99,8 @@ function testTime() {
     else if (currentTime.isSame(pm12)) {
         $(".form12").addClass("present");
     };
-    // pm1 1PM
-    pm1 = moment().startOf('day').add(13, "hours");
-    // Add pm1 if/else
+    // 1PM
+    pm1 = moment().startOf('day').add(13, "hours")
     if (currentTime.isAfter(pm1)) {
         $(".form1").addClass("past");
     }
@@ -113,9 +110,8 @@ function testTime() {
     else if (currentTime.isSame(pm1)) {
         $(".form1").addClass("present");
     };
-    // pm2 2PM
+    // 2PM
     pm2 = moment().startOf('day').add(14, "hours");
-    // Add pm2 if/else
     if (currentTime.isAfter(pm2)) {
         $(".form2").addClass("past");
     }
@@ -137,9 +133,8 @@ function testTime() {
     else if (currentTime.isSame(pm3)) {
         $(".form3").addClass("present");
     };
-    // pm4 4pm
+    // 4pm
     pm4 = moment().startOf('day').add(16, "hours");
-    // Add pm4 if/else
     if (currentTime.isAfter(pm4)) {
         $(".form4").addClass("past");
     }
@@ -149,9 +144,8 @@ function testTime() {
     else if (currentTime.isSame(pm4)) {
         $(".form4").addClass("present");
     };
-    // pm5 5pm
+    // 5pm
     pm5 = moment().startOf('day').add(17, "hours");
-    // Add pm5 if/else
     if (currentTime.isAfter(pm5)) {
         $(".form5").addClass("past");
     }
