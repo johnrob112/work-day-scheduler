@@ -4,6 +4,8 @@ moment(Date);
 $("#currentDay").text(moment().format('dddd MMMM Do YYYY, h:mm a'));
 var currentTime = moment();
 currentTime = currentTime.startOf("hour");
+
+// Set start of day at 9am
 var beforeTime = moment().startOf('day').add(9, "hours");
 
 
@@ -12,7 +14,6 @@ var beforeTime = moment().startOf('day').add(9, "hours");
 // Time blocks implemented to html
 // 9 AM 
 var am9 = beforeTime.add(0, "h");
-// var time1 = beforeTime;
 am9 = am9.format('hh:mm A');
 $(".block1").text(am9);
 // 10 AM
@@ -47,3 +48,138 @@ $(".block8").text(pm4);
 var pm4 = beforeTime.add(1, "h");
 pm4 = pm4.format('hh:mm A');
 $(".block9").text(pm4);
+
+
+function testTime() {
+    // Add am9 9AM
+    am9 = moment().startOf('day').add(9, "hours");
+    // Adjusts current time to the hour
+    currentTime = currentTime.startOf("hour");
+    // Add am9 if/else
+    if (currentTime.isAfter(am9)) {
+        $(".form9").addClass("past");
+    }
+    else if (currentTime.isBefore(am9)) {
+        $(".form9").addClass("future");
+    }
+    else if (currentTime.isSame(am9)) {
+        $(".form9").addClass("present");
+    };
+    // Add am10 10AM
+    am10 = moment().startOf('day').add(10, "hours");
+    // Add am10 if/else
+    if (currentTime.isAfter(am10)) {
+        $(".form10").addClass("past");
+    }
+    else if (currentTime.isBefore(am10)) {
+        $(".form10").addClass("future");
+    }
+    else if (currentTime.isSame(am10)) {
+        $(".form10").addClass("present");
+    };
+    // am11 11AM
+    am11 = moment().startOf('day').add(11, "hours");
+    // Add am11 if/else
+    if (currentTime.isAfter(am11)) {
+        $(".form11").addClass("past");
+    }
+    else if (currentTime.isBefore(am11)) {
+        $(".form11").addClass("future");
+    }
+    else if (currentTime.isSame(am11)) {
+        $(".form11").addClass("present");
+    };
+    // pm12 12PM
+    pm12 = moment().startOf('day').add(12, "hours");
+    // Add pm12 if/else
+    if (currentTime.isAfter(pm12)) {
+        $(".form12").addClass("past");
+    }
+    else if (currentTime.isBefore(pm12)) {
+        $(".form12").addClass("future");
+    }
+    else if (currentTime.isSame(pm12)) {
+        $(".form12").addClass("present");
+    };
+    // pm1 1PM
+    pm1 = moment().startOf('day').add(13, "hours");
+    // Add pm1 if/else
+    if (currentTime.isAfter(pm1)) {
+        $(".form1").addClass("past");
+    }
+    else if (currentTime.isBefore(pm1)) {
+        $(".form1").addClass("future");
+    }
+    else if (currentTime.isSame(pm1)) {
+        $(".form1").addClass("present");
+    };
+    // pm2 2PM
+    pm2 = moment().startOf('day').add(14, "hours");
+    // Add pm2 if/else
+    if (currentTime.isAfter(pm2)) {
+        $(".form2").addClass("past");
+    }
+    else if (currentTime.isBefore(pm2)) {
+        $(".form2").addClass("future");
+    }
+    else if (currentTime.isSame(pm2)) {
+        $(".form2").addClass("present");
+    };
+    // pm3 3M
+    pm3 = moment().startOf('day').add(15, "hours");
+    // Add pm3 if/else
+    if (currentTime.isAfter(pm3)) {
+        $(".form3").addClass("past");
+    }
+    else if (currentTime.isBefore(pm3)) {
+        $(".form3").addClass("future");
+    }
+    else if (currentTime.isSame(pm3)) {
+        $(".form3").addClass("present");
+    };
+    // pm4 4pm
+    pm4 = moment().startOf('day').add(16, "hours");
+    // Add pm4 if/else
+    if (currentTime.isAfter(pm4)) {
+        $(".form4").addClass("past");
+    }
+    else if (currentTime.isBefore(pm4)) {
+        $(".form4").addClass("future");
+    }
+    else if (currentTime.isSame(pm4)) {
+        $(".form4").addClass("present");
+    };
+    // pm5 5pm
+    pm5 = moment().startOf('day').add(17, "hours");
+    // Add pm5 if/else
+    if (currentTime.isAfter(pm5)) {
+        $(".form5").addClass("past");
+    }
+    else if (currentTime.isBefore(pm5)) {
+        $(".form5").addClass("future");
+    }
+    else if (currentTime.isSame(pm5)) {
+        $(".form5").addClass("present");
+    };
+}
+
+
+testTime();
+// Loops through input area to get item from local storage
+var x = [9, 10, 11, 12, 1, 2, 3, 4, 5];
+// Test loop:
+for (var i = 0; i < x.length; i++) {
+    var dataHour = localStorage.getItem(x[i]);
+    // form - control
+    $(".form" + x[i]).val(dataHour);
+}
+
+
+// Event listener to save to local stroage
+$(".saveBtn").click(function () {
+    event.preventDefault();
+    var formValue = $(this).siblings(".form-control").val();
+    var listItem = $(this).parent().data("hour");
+
+    localStorage.setItem(listItem, formValue);
+});
