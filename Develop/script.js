@@ -168,12 +168,10 @@ for (var i = 0; i < x.length; i++) {
     $(".form" + x[i]).val(dataHour);
 }
 
-
 // Event listener to save to local stroage
 $(".saveBtn").click(function () {
     event.preventDefault();
     var formValue = $(this).siblings(".form-control").val();
     var listItem = $(this).parent().data("hour");
-
     localStorage.setItem(listItem, formValue);
 });
